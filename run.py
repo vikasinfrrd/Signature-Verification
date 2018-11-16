@@ -31,7 +31,7 @@ for name in forged_image_filenames:
     forged_image_features[signature_id - 1].append({"name": name})
 
 
-def preprocess_image(path, display=False):
+def preprocess_image(path, display=True):
     raw_image = cv2.imread(path)
     bw_image = cv2.cvtColor(raw_image, cv2.COLOR_BGR2GRAY)
     bw_image = 255 - bw_image
@@ -49,7 +49,7 @@ def preprocess_image(path, display=False):
     return threshold_image
 
 
-def get_contour_features(im, display=False):
+def get_contour_features(im, display=True):
     '''
     :param im: input preprocessed image
     :param display: flag - if true display images
@@ -94,7 +94,7 @@ def get_contour_features(im, display=False):
 
 des_list = []
 
-def sift(im, path, display=False):
+def sift(im, path, display=True):
     raw_image = cv2.imread(path)
     sift = cv2.xfeatures2d.SIFT_create()
     kp, des = sift.detectAndCompute(im, None)
@@ -154,7 +154,7 @@ for i in range(12):
     descriptors = des_list[0][1]
     for image_path, descriptor in des_list[1:]:
         descriptors = np.vstack((descriptors, descriptor))
-    k = 500
+    k = 200
     voc, variance = kmeans(descriptors, k, 1)
 
     # Calculate the histogram of features

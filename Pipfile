@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+sklearn = "*"
+pillow = "*"
+imagehash = "*"
+matplotlib = "*"
+jupyter = "*"
+opencv-python = "==3.4.2.16"
+opencv-contrib-python = "==3.4.2.16"
+ipykernel = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.6"
